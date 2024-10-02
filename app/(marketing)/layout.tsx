@@ -1,4 +1,6 @@
 import React from "react";
+import Navbar from "./_components/Navbar";
+import Footer from "./_components/Footer";
 
 export default function MarketingLayout({
   children,
@@ -7,11 +9,9 @@ export default function MarketingLayout({
 }) {
   return (
     <div className="h-full bg-slate-100">
-      <main className="pt-40 pb-20 bg-slate-100">
-        {/* Navbar */}
-        {children}
-        {/* Footer */}
-      </main>
+      <Navbar />
+      <main className="pt-40 pb-20 bg-slate-100">{children}</main>
+      <Footer />
     </div>
   );
 }
