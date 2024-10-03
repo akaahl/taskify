@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,8 +15,17 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Taskify | Project management app for professionals.",
-  description: "Project management app for professionals.",
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  icons: [
+    {
+      url: "./logo.svg",
+      href: "./logo.svg",
+    },
+  ],
 };
 
 export default function RootLayout({
