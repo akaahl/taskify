@@ -25,11 +25,17 @@ export default function Navbar() {
           afterSelectOrganizationUrl={"/select-org"}
           appearance={{
             elements: {
+              organizationPreviewAvatarBox: {
+                height: "30px",
+                width: "30px",
+              },
+              organizationPreviewMainIdentifier: {
+                fontSize: "18px",
+              },
               rootBox: {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "4.5rem",
               },
             },
           }}
@@ -37,11 +43,9 @@ export default function Navbar() {
         <UserButton
           appearance={{
             elements: {
-              rootBox: {
-                avatarBox: {
-                  height: 30,
-                  width: 30,
-                },
+              userButtonAvatarBox: {
+                height: "40px",
+                width: "40px",
               },
             },
           }}
