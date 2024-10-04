@@ -1,5 +1,6 @@
 "use client";
 
+import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
@@ -9,6 +10,7 @@ import {
 import { PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { useLocalStorage } from "usehooks-ts";
+import NavItem, { Organization } from "./NavItem";
 
 interface SidebarProps {
   storageKey?: string;
@@ -64,7 +66,7 @@ export default function Sidebar({
 
   return (
     <>
-      <div className="font-medium text-xs flex items-center mb-1">
+      <div className="font-medium flex items-center mb-1">
         <span className="pl-4">Workspaces</span>
         <Button
           asChild
@@ -78,6 +80,23 @@ export default function Sidebar({
           </Link>
         </Button>
       </div>
+      <Accordion
+        type="multiple"
+        defaultValue={defaultAccordionValue}
+        className="space-y-2"
+      >
+        {userMemberships.data.map(({ organization }) => (
+          <NavItem
+            key={organization.id}
+            isActive={
+              activeOrganization?.id === organization.id
+            }
+            isExpanded={expanded[organization.id]}
+            organization={organization as Organization}
+            onExpand={onExpand}
+          />
+        ))}
+      </Accordion>
     </>
   );
 }
