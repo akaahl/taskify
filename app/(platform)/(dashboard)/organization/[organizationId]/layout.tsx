@@ -1,4 +1,5 @@
 import React from "react";
+import Sidebar from "../../_components/Sidebar";
 
 export default function OrganizationIdLayout({
   children,
@@ -8,7 +9,9 @@ export default function OrganizationIdLayout({
   return (
     <main className="pt-20 md:pt-24 px-4 max-w-6xl 2xl:max-w-screen mx-auto">
       <div className="flex gap-x-7">
-        <div className="w-64 shrink-0 hidden md:block">{/* Sidebar */}</div>
+        <div className="w-64 shrink-0 hidden md:block">
+          <Sidebar />
+        </div>
         {children}
       </div>
     </main>
