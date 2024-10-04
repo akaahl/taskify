@@ -1,3 +1,3 @@
 export default function OrganizationIdPage() {
-  return <div></div>;
+  return <div>ORganization page</div>;
 }

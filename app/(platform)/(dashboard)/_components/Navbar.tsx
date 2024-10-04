@@ -10,10 +10,10 @@ export default function Navbar() {
         <div className="hidden md:flex">
           <LogoHeader />
         </div>
-        <Button className="rounded-md hidden md:block h-auto py-1.5 px-2">
+        <Button className="rounded-md hidden md:block h-auto py-1.5 px-2 text-md">
           Create
         </Button>
-        <Button className="rounded-sm block md:hidden ">
+        <Button className="rounded-sm block md:hidden">
           <Plus className="h-4 w-4" />
         </Button>
       </div>
