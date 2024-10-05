@@ -83,3 +83,8 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.cl-internal-13u79ez {
+  background: none;
+  mask-image: none;
+}
