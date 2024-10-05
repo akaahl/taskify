@@ -7,12 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import {
-  Activity,
-  CreditCard,
-  Layout,
-  Settings,
-} from "lucide-react";
+import { Activity, CreditCard, Layout, Settings } from "lucide-react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -75,9 +70,7 @@ export default function NavItem({
         onClick={() => onExpand(organization.id)}
         className={cn(
           "flex items-center gap-x-2 p-1.5 text-neutral-700 rounded-md hover:bg-neutral-500/10 transition text-start hover:no-underline no-underline",
-          isActive &&
-            !isExpanded &&
-            "bg-sky-500/10 text-sky-700",
+          isActive && !isExpanded && "bg-sky-500/10 text-sky-700",
         )}
       >
         <div className="flex items-center gap-x-2">
@@ -89,9 +82,7 @@ export default function NavItem({
               className="rounded-sm object-cover"
             />
           </div>
-          <span className="font-medium ml-2">
-            {organization.name}
-          </span>
+          <span className="font-medium ml-2">{organization.name}</span>
         </div>
       </AccordionTrigger>
       <AccordionContent className="pt-1 text-neutral-700">
@@ -101,8 +92,7 @@ export default function NavItem({
             onClick={() => onClick(route.href)}
             className={cn(
               "w-full font-normal justify-start pl-10 mb-1",
-              route.href === pathname &&
-                "bg-sky-500/10 text-sky-700",
+              route.href === pathname && "bg-sky-500/10 text-sky-700",
             )}
             variant="ghost"
           >
