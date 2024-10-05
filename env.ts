@@ -14,3 +14,6 @@ export const NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL =
 
 export const NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL =
   process.env.NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL;
+
+export const DATABASE_URL = process.env.DATABASE_URL;
+export const DIRECT_URL = process.env.DIRECT_URL;
