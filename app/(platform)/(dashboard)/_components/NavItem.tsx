@@ -1,11 +1,20 @@
 "use client";
 
 import {
+  AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  Activity,
+  CreditCard,
+  Layout,
+  Settings,
+} from "lucide-react";
 import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 
 export type Organization = {
   name: string;
@@ -27,6 +36,36 @@ export default function NavItem({
   organization,
   onExpand,
 }: NavItemProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const routes = [
+    {
+      label: "Boards",
+      icon: <Layout className="h-4 w-4 mr-2" />,
+      href: `/organization/${organization.id}`,
+    },
+    {
+      label: "Activity",
+      icon: <Activity className="h-4 w-4 mr-2" />,
+      href: `/organization/${organization.id}/activity`,
+    },
+    {
+      label: "Settings",
+      icon: <Settings className="h-4 w-4 mr-2" />,
+      href: `/organization/${organization.id}/settings`,
+    },
+    {
+      label: "Billing",
+      icon: <CreditCard className="h-4 w-4 mr-2" />,
+      href: `/organization/${organization.id}/billing`,
+    },
+  ];
+
+  const onClick = (href: string) => {
+    router.push(href);
+  };
+
   return (
     <AccordionItem
       className="border-none"
@@ -50,8 +89,28 @@ export default function NavItem({
               className="rounded-sm object-cover"
             />
           </div>
+          <span className="font-medium ml-2">
+            {organization.name}
+          </span>
         </div>
       </AccordionTrigger>
+      <AccordionContent className="pt-1 text-neutral-700">
+        {routes.map((route) => (
+          <Button
+            key={route.href}
+            onClick={() => onClick(route.href)}
+            className={cn(
+              "w-full font-normal justify-start pl-10 mb-1",
+              route.href === pathname &&
+                "bg-sky-500/10 text-sky-700",
+            )}
+            variant="ghost"
+          >
+            {route.icon}
+            {route.label}
+          </Button>
+        ))}
+      </AccordionContent>
     </AccordionItem>
   );
 }
