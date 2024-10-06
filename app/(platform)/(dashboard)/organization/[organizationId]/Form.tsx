@@ -2,6 +2,7 @@
 
 import { createBoard } from "@/actions/createBoard";
 import { FormInput } from "@/components/form/FormInput";
+import FormSubmit from "@/components/form/FormSubmit";
 import { useAction } from "@/hooks/useActions";
 
 export default function Form() {
@@ -28,6 +29,7 @@ export default function Form() {
           label="Board Title"
         />
       </div>
+      <FormSubmit>Save</FormSubmit>
     </form>
   );
 }
