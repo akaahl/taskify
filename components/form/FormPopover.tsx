@@ -14,6 +14,7 @@ import { useAction } from "@/hooks/useActions";
 import { createBoard } from "@/actions/createBoard";
 import { StringValidation } from "zod";
 import { toast } from "sonner";
+import FormPicker from "./FormPicker";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -70,6 +71,10 @@ export default function FormPopover({
           className="space-y-3"
         >
           <div className="space-y-3">
+            <FormPicker
+              id="image"
+              errors={fieldErrors}
+            />
             <FormInput
               id="title"
               label="Board title"

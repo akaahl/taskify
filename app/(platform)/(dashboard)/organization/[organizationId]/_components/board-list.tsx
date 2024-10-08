@@ -12,7 +12,7 @@ export default function BoardList() {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         <FormPopover
           side="right"
-          sideOffset={10}
+          sideOffset={20}
         >
           <div
             role="button"
