@@ -17,3 +17,5 @@ export const NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL =
 
 export const DATABASE_URL = process.env.DATABASE_URL;
 export const DIRECT_URL = process.env.DIRECT_URL;
+
+export const UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;

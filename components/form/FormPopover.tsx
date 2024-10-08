@@ -13,6 +13,7 @@ import FormSubmit from "./FormSubmit";
 import { useAction } from "@/hooks/useActions";
 import { createBoard } from "@/actions/createBoard";
 import { StringValidation } from "zod";
+import { toast } from "sonner";
 
 interface FormPopoverProps {
   children: React.ReactNode;
@@ -30,9 +31,11 @@ export default function FormPopover({
   const { execute, fieldErrors } = useAction(createBoard, {
     onSuccess: (data) => {
       console.log(data);
+      toast.success("Board created!");
     },
     onError: (error) => {
       console.log(error);
+      toast.error(error);
     },
   });
 
