@@ -1,5 +1,5 @@
-import { Toaster } from "@/components/ui/sonner";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Toaster } from "sonner";
 
 export default function PlatformLayout({
   children,

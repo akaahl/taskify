@@ -48,7 +48,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
   } catch (error) {
-    console.log(orgId);
     return {
       error: "Failed to create board",
     };

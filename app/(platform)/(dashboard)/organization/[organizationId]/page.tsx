@@ -1,6 +1,5 @@
 import { Separator } from "@/components/ui/separator";
 import Info from "./_components/info";
-import Form from "./Form";
 import BoardList from "./_components/board-list";
 
 export default function OrganizationIdPage() {
