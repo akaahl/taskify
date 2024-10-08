@@ -1,3 +1,4 @@
+import FormPopover from "@/components/form/FormPopover";
 import Hint from "@/components/Hint";
 import { HelpCircle, User2 } from "lucide-react";
 
@@ -9,19 +10,24 @@ export default function BoardList() {
         Your boards
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div
-          role="button"
-          className="aspect-video w-full h-full relative bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity transition"
+        <FormPopover
+          side="right"
+          sideOffset={10}
         >
-          <p>Create a new board</p>
-          <span className="text-sm">5 remaining</span>
-          <Hint
-            sideOffset={40}
-            description="Free workspaces can have up to 5 boards. For unlimited boards, upgrade this workspace"
+          <div
+            role="button"
+            className="aspect-video w-full h-full relative bg-muted rounded-sm flex flex-col gap-y-1 items-center justify-center hover:opacity transition"
           >
-            <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
-          </Hint>
-        </div>
+            <p>Create a new board</p>
+            <span className="text-sm">5 remaining</span>
+            <Hint
+              sideOffset={40}
+              description="Free workspaces can have up to 5 boards. For unlimited boards, upgrade this workspace"
+            >
+              <HelpCircle className="absolute bottom-2 right-2 h-[14px] w-[14px]" />
+            </Hint>
+          </div>
+        </FormPopover>
       </div>
     </div>
   );
