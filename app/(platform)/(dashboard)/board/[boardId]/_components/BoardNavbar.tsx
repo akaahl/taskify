@@ -1,5 +1,3 @@
-import prisma from "@/utils/db";
-import { auth } from "@clerk/nextjs/server";
 import { Board } from "@prisma/client";
 import BoardTitleForm from "./BoardTitleForm";
 

@@ -52,6 +52,8 @@ export default async function BoardIdLayout({
     notFound();
   }
 
+  console.log("This is ", board);
+
   return (
     <div
       className="relative h-full bg-no-repeat bg-cover bg-center"
