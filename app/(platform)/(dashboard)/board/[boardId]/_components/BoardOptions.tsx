@@ -18,11 +18,7 @@ interface BoardOptionsProps {
 
 export default function BoardOptions({ id }: BoardOptionsProps) {
   const { execute, isLoading } = useAction(deleteBoard, {
-    onSuccess: (result) => {
-      console.log(result);
-    },
     onError: (error) => {
-      console.log(error);
       toast.error(error);
     },
   });

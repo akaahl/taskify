@@ -26,7 +26,6 @@ export default function BoardTitleForm({ data }: BoardTitleFormProps) {
       disableEditing();
     },
     onError: (error) => {
-      console.log(error);
       toast.error("Failed to update board title.");
     },
   });
