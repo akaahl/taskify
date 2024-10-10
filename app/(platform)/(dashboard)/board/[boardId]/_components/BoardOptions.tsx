@@ -10,24 +10,25 @@ import {
 } from "@/components/ui/popover";
 import { useAction } from "@/hooks/useActions";
 import { MoreHorizontal, X } from "lucide-react";
+import { toast } from "sonner";
 
 interface BoardOptionsProps {
   id: string;
 }
 
 export default function BoardOptions({ id }: BoardOptionsProps) {
-  const { execute } = useAction(deleteBoard, {
+  const { execute, isLoading } = useAction(deleteBoard, {
     onSuccess: (result) => {
       console.log(result);
     },
     onError: (error) => {
       console.log(error);
+      toast.error(error);
     },
   });
 
-  const onSubmit = () => {
-    console.log(id);
-    // execute({ id });
+  const onDelete = () => {
+    execute({ id });
   };
 
   return (
@@ -60,16 +61,15 @@ export default function BoardOptions({ id }: BoardOptionsProps) {
             <X className="h-4 w-4" />
           </Button>
         </PopoverClose>
-        <form action={onSubmit}>
-          <Button
-            variant="ghost"
-            className="rounded-none w-full h-auto p-2 px-5 justify-start
+        <Button
+          variant="ghost"
+          className="rounded-none w-full h-auto p-2 px-5 justify-start
             font-normal text-sm"
-            onClick={onSubmit}
-          >
-            Delete this board
-          </Button>
-        </form>
+          onClick={onDelete}
+          disabled={isLoading}
+        >
+          Delete this board
+        </Button>
       </PopoverContent>
     </Popover>
   );
