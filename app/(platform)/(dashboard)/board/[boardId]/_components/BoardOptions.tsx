@@ -1,5 +1,6 @@
 "use client";
 
+import { deleteBoard } from "@/actions/deleteBoard";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -7,6 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useAction } from "@/hooks/useActions";
 import { MoreHorizontal, X } from "lucide-react";
 
 interface BoardOptionsProps {
@@ -14,6 +16,20 @@ interface BoardOptionsProps {
 }
 
 export default function BoardOptions({ id }: BoardOptionsProps) {
+  const { execute } = useAction(deleteBoard, {
+    onSuccess: (result) => {
+      console.log(result);
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  const onSubmit = () => {
+    console.log(id);
+    // execute({ id });
+  };
+
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -44,14 +60,16 @@ export default function BoardOptions({ id }: BoardOptionsProps) {
             <X className="h-4 w-4" />
           </Button>
         </PopoverClose>
-        <Button
-          variant="ghost"
-          className="rounded-none w-full h-auto p-2 px-5 justify-start
-          font-normal text-sm"
-          onClick={() => {}}
-        >
-          Delete this board
-        </Button>
+        <form action={onSubmit}>
+          <Button
+            variant="ghost"
+            className="rounded-none w-full h-auto p-2 px-5 justify-start
+            font-normal text-sm"
+            onClick={onSubmit}
+          >
+            Delete this board
+          </Button>
+        </form>
       </PopoverContent>
     </Popover>
   );

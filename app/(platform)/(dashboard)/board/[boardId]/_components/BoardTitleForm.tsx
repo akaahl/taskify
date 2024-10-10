@@ -20,9 +20,9 @@ export default function BoardTitleForm({ data }: BoardTitleFormProps) {
   const [title, setTitle] = useState(data.title);
 
   const { execute } = useAction(updateBoard, {
-    onSuccess: (data) => {
-      toast.success(`Board "${data.title}" updated!`);
-      setTitle(data.title);
+    onSuccess: (result) => {
+      toast.success(`Board "${result.title}" updated!`);
+      setTitle(result.title);
       disableEditing();
     },
     onError: (error) => {
