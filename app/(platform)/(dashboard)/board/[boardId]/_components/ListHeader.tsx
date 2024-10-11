@@ -1,8 +1,11 @@
 "use client";
 
+import { updateList } from "@/actions/updateList";
 import { FormInput } from "@/components/form/FormInput";
+import { useAction } from "@/hooks/useActions";
 import { List } from "@prisma/client";
 import { ElementRef, useRef, useState } from "react";
+import { toast } from "sonner";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
 
 interface ListHeaderProps {
@@ -27,10 +30,37 @@ export default function ListHeader({ data }: ListHeaderProps) {
     setIsEditing(false);
   };
 
+  const { execute } = useAction(updateList, {
+    onSuccess: (result) => {
+      toast.success(`Renamed to "${result.title}" successfully.`);
+      setTitle(result.title);
+      disableEditing();
+    },
+    onError: (error) => {
+      toast.error(error);
+    },
+  });
+
   const onKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Escape") {
       formRef.current?.requestSubmit();
     }
+  };
+
+  const handleBlur = () => {
+    formRef.current?.requestSubmit();
+  };
+
+  const handleSubmit = (formData: FormData) => {
+    const title = formData.get("title") as string;
+    const id = formData.get("id") as string;
+    const boardId = formData.get("boardId") as string;
+
+    if (title === data.title) {
+      return disableEditing();
+    }
+
+    execute({ title, id, boardId });
   };
 
   useEventListener("keydown", onKeyDown);
@@ -43,30 +73,37 @@ export default function ListHeader({ data }: ListHeaderProps) {
     >
       {isEditing ? (
         <form
-          action=""
+          action={handleSubmit}
+          ref={formRef}
           className="flex px-[2px] w-full"
         >
           <input
             hidden
-            id={data.id}
-            name={data.id}
+            id="id"
+            name="id"
             value={data.id}
+            readOnly
           />
           <input
             hidden
-            id={data.boardId}
-            name={data.boardId}
+            id="boardId"
+            name="boardId"
             value={data.boardId}
+            readOnly
           />
           <FormInput
             ref={inputRef}
-            onBlur={() => disableEditing()}
-            id={title}
+            onBlur={handleBlur}
+            id="title"
             placeholder="Enter a list title..."
             defaultValue={title}
             className="text-sm px-[7px] py-1 h-7 font-medium
             border-transparent hover:border-input focus:border-input 
             transition truncate bg-transparent focus:bg-white w-full"
+          />
+          <button
+            type="submit"
+            hidden
           />
         </form>
       ) : (
