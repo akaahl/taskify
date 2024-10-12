@@ -1,5 +1,6 @@
 "use client";
 
+import FormSubmit from "@/components/form/FormSubmit";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -7,6 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
 import { List } from "@prisma/client";
 import { MoreHorizontal, X } from "lucide-react";
 
@@ -50,6 +52,47 @@ export default function ListOptions({ onAddCard, data }: ListOptionsProps) {
         >
           Add a new card
         </Button>
+        <form action="">
+          <input
+            type="hidden"
+            id="id"
+            name="id"
+            defaultValue={data.id}
+          />
+          <input
+            type="hidden"
+            id="boardId"
+            name="boardId"
+            defaultValue={data.boardId}
+          />
+          <FormSubmit
+            variant="ghost"
+            className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
+          >
+            Copy list
+          </FormSubmit>
+        </form>
+        <Separator />
+        <form action="">
+          <input
+            type="hidden"
+            id="id"
+            name="id"
+            defaultValue={data.id}
+          />
+          <input
+            type="hidden"
+            id="boardId"
+            name="boardId"
+            defaultValue={data.boardId}
+          />
+          <FormSubmit
+            variant="ghost"
+            className="rounded-none w-full h-auto p-2 px-5 justify-start font-normal text-sm"
+          >
+            Delete this list
+          </FormSubmit>
+        </form>
       </PopoverContent>
     </Popover>
   );
