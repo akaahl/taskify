@@ -42,6 +42,58 @@ export default function ListContainer({ boardId, data }: ListContainerProps) {
       );
       setOrderedData(items);
     }
+
+    if (type === "card") {
+      let newOrderedData = [...orderedData];
+
+      const sourceList = newOrderedData.find(
+        (list) => list.id === source.droppableId,
+      );
+      const destinationList = newOrderedData.find(
+        (list) => list.id === destination.droppableId,
+      );
+
+      if (!sourceList || !destinationList) {
+        return;
+      }
+
+      if (!sourceList.cards) {
+        sourceList.cards = [];
+      }
+
+      if (!destinationList.cards) {
+        destinationList.cards = [];
+      }
+
+      if (source.droppableId === destination.droppableId) {
+        const reorderedCards = reorder(
+          sourceList.cards,
+          source.index,
+          destination.index,
+        );
+
+        reorderedCards.forEach((card, index) => {
+          card.order = index;
+        });
+
+        sourceList.cards = reorderedCards;
+        setOrderedData(orderedData);
+      } else {
+        const [movedCard] = sourceList.cards.splice(source.index, 1);
+        movedCard.listId = destination.droppableId;
+        destinationList.cards.splice(destination.index, 0, movedCard);
+
+        sourceList.cards.forEach((card, index) => {
+          card.order = index;
+        });
+
+        destinationList.cards.forEach((card, index) => {
+          card.order = index;
+        });
+
+        setOrderedData(newOrderedData);
+      }
+    }
   };
 
   useEffect(() => {
