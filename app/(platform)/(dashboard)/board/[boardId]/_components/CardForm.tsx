@@ -80,7 +80,7 @@ export const CardForm = forwardRef<HTMLTextAreaElement, CardFormProps>(
             id="listId"
             defaultValue={listId}
           />
-          <div className="flex items-center gap-x-1">
+          <div className="flex items-center gap-x-1 px-1">
             <FormSubmit>Add card</FormSubmit>
             <Button
               size="sm"

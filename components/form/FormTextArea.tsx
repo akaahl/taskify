@@ -42,7 +42,7 @@ export const FormTextArea = forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
 
     return (
       <div className="space-y-2 w-full">
-        <div className="space-y-1 w-full">
+        <div className="space-y-1 w-full mt-3 px-1">
           {label ? (
             <Label
               htmlFor={id}
@@ -59,7 +59,7 @@ export const FormTextArea = forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
             id={id}
             disabled={disabled || pending}
             className={cn(
-              "resize-none focus-visible:ring-0 focus-visible:ring-offset-0 ring-0focus:ring-0 outline-none shadow-sm",
+              "resize-none bg-white focus-visible:ring-0 focus-visible:ring-offset-0 ring-0focus:ring-0 outline-none shadow-sm",
               className,
             )}
             aria-describedBy={`${id}-error`}

@@ -4,6 +4,8 @@ import { ListWithCards } from "@/types";
 import ListHeader from "./ListHeader";
 import { ElementRef, useRef, useState } from "react";
 import { CardForm } from "./CardForm";
+import { cn } from "@/lib/utils";
+import CardItem from "./CardItem";
 
 interface ListItemProps {
   data: ListWithCards;
@@ -32,6 +34,20 @@ export default function ListItem({ index, data }: ListItemProps) {
           onAddCard={enableEditing}
           data={data}
         />
+        <ol
+          className={cn(
+            "mx-1 px-1 py-0.5 flex flex-col gap-y-2",
+            data.cards.length > 2 ? "mt-2" : "mt-0",
+          )}
+        >
+          {data.cards.map((card, index) => (
+            <CardItem
+              index={index}
+              key={card.id}
+              card={card}
+            />
+          ))}
+        </ol>
         <CardForm
           listId={data.id}
           isEditing={isEditing}
