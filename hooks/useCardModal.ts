@@ -1,15 +1,15 @@
 import { create } from "zustand";
 
-type MobileSidebarStore = {
+type CardModalStore = {
+  id?: string;
   isOpen: boolean;
-  onOpen: () => void;
+  onOpen: (id: string) => void;
   onClose: () => void;
 };
 
-export const useMobileSidebar = create<MobileSidebarStore>(
-  (set) => ({
-    isOpen: false,
-    onOpen: () => set({ isOpen: true }),
-    onClose: () => set({ isOpen: false }),
-  }),
-);
+export const useCardModal = create<CardModalStore>((set) => ({
+  id: undefined,
+  isOpen: false,
+  onOpen: (id: string) => set({ isOpen: true, id }),
+  onClose: () => set({ isOpen: false, id: undefined }),
+}));
