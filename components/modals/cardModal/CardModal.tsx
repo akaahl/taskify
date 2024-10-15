@@ -7,6 +7,7 @@ import { CardWithList } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { Header } from "./Header";
 import { Description } from "./Description";
+import { Actions } from "./Actions";
 
 export const CardModal = () => {
   const id = useCardModal((state) => state.id);
@@ -25,7 +26,7 @@ export const CardModal = () => {
     >
       <DialogContent>
         {!cardData ? <Header.Skeleton /> : <Header data={cardData} />}
-        <div className="grid grid-cols-1 md:grid-cols-6 md:gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-4 md:gap-4">
           <div className="col-span-3">
             <div className="w-full space-y-6">
               {!cardData ? (
@@ -35,6 +36,7 @@ export const CardModal = () => {
               )}
             </div>
           </div>
+          {!cardData ? <Actions.Skeleton /> : <Actions data={cardData} />}
         </div>
       </DialogContent>
     </Dialog>
