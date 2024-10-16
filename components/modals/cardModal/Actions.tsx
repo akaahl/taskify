@@ -55,7 +55,7 @@ export const Actions = ({ data }: ActionsProps) => {
 
   return (
     <div className="space-y-2 mt-2">
-      <p className="text-xs font-semibold">Actions</p>
+      <p className="text-sm font-semibold">Actions</p>
       <Button
         variant="gray"
         size="inline"
