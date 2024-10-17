@@ -1,7 +1,7 @@
 import prisma from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 
-const DAY_IN_MS = 84_400_000;
+const DAY_IN_MS = 86_400_000;
 
 export const checkSubscription = async () => {
   const { orgId } = auth();

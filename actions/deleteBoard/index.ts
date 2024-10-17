@@ -10,6 +10,7 @@ import { redirect } from "next/navigation";
 import { createAuditLog } from "@/lib/createAuditLog";
 import { ACTION, ENTITY_TYPE } from "@prisma/client";
 import { decreaseCountLimit } from "@/lib/orgLimit";
+import { checkSubscription } from "@/lib/subscription";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
   const { userId, orgId } = auth();
@@ -20,6 +21,7 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     };
   }
 
+  const isPro = await checkSubscription();
   const { id } = data;
 
   let board;
@@ -32,7 +34,9 @@ const handler = async (data: InputType): Promise<ReturnType> => {
       },
     });
 
-    await decreaseCountLimit();
+    if (!isPro) {
+      await decreaseCountLimit();
+    }
 
     await createAuditLog({
       entityTitle: board.title,
