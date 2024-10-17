@@ -7,7 +7,6 @@ import { useAction } from "@/hooks/useActions";
 import { Board } from "@prisma/client";
 import { ElementRef, useRef, useState } from "react";
 import { toast } from "sonner";
-import { revalidatePath } from "next/cache";
 
 interface BoardTitleFormProps {
   data: Board;
@@ -25,7 +24,7 @@ export default function BoardTitleForm({ data }: BoardTitleFormProps) {
       setTitle(result.title);
       disableEditing();
     },
-    onError: (error) => {
+    onError: () => {
       toast.error("Failed to update board title.");
     },
   });

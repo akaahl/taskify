@@ -50,6 +50,7 @@ export const FormTextArea = forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
             />
           ) : null}
           <Textarea
+            ref={ref}
             onKeyDown={onKeyDown}
             onBlur={onBlur}
             onClick={onClick}
@@ -62,7 +63,7 @@ export const FormTextArea = forwardRef<HTMLTextAreaElement, FormTextAreaProps>(
               "resize-none bg-white focus-visible:ring-0 focus-visible:ring-offset-0 ring-0focus:ring-0 outline-none shadow-sm",
               className,
             )}
-            aria-describedBy={`${id}-error`}
+            aria-describedby={`${id}-error`}
             defaultValue={defaultValue}
           />
         </div>

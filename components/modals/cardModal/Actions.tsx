@@ -7,7 +7,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useAction } from "@/hooks/useActions";
 import { useCardModal } from "@/hooks/useCardModal";
 import { CardWithList } from "@/types";
-import { Copy, Delete } from "lucide-react";
+import { Copy } from "lucide-react";
 import { useParams } from "next/navigation";
 import { toast } from "sonner";
 

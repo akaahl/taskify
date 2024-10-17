@@ -36,7 +36,7 @@ export default function FormPicker({ id, errors }: FormPickerProps) {
         } else {
           console.error("Failed to get new images!");
         }
-      } catch (error) {
+      } catch {
         setImages(defaultImages);
       } finally {
         setIsLoading(false);

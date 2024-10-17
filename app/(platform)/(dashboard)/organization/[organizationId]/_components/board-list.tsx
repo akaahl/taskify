@@ -38,6 +38,7 @@ export default async function BoardList() {
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {boards.map((board) => (
           <Link
+            key={board.id}
             id={board.id}
             href={`/board/${board.id}`}
             className="group relative aspect-video bg-no-repeat bg-center bg-cover rounded-md h-full w-full p-2 overflow-hidden"

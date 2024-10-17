@@ -4,7 +4,6 @@ import { Plus, X } from "lucide-react";
 import ListWrapper from "./ListWrapper";
 import { ElementRef, useRef, useState } from "react";
 import { useEventListener, useOnClickOutside } from "usehooks-ts";
-import { Input } from "@/components/ui/input";
 import { FormInput } from "@/components/form/FormInput";
 import { useParams, useRouter } from "next/navigation";
 import FormSubmit from "@/components/form/FormSubmit";

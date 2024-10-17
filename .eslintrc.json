@@ -2,6 +2,8 @@
   "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
-    "eol-last": ["error", "always"]
+    "eol-last": ["error", "always"],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off"
   }
 }

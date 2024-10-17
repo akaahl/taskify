@@ -1,6 +1,6 @@
 import prisma from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
-import { Card, ENTITY_TYPE } from "@prisma/client";
+import { ENTITY_TYPE } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET(
@@ -27,7 +27,7 @@ export async function GET(
     });
 
     return NextResponse.json(auditLogs);
-  } catch (error) {
+  } catch {
     return new NextResponse("Internal Error", { status: 500 });
   }
 }
