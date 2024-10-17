@@ -4,6 +4,7 @@ import { useProModal } from "@/hooks/useProModal";
 import { Dialog, DialogContent } from "../ui/dialog";
 import Image from "next/image";
 import Hero from "@/public/hero.svg";
+import { Button } from "../ui/button";
 
 export default function ProModal() {
   const proModal = useProModal();
@@ -13,7 +14,7 @@ export default function ProModal() {
       open={proModal.isOpen}
       onOpenChange={proModal.onClose}
     >
-      <DialogContent className="max-w-md p-0 overflow-hidden">
+      <DialogContent className="max-w-md p-0 overflow-hidden gap-0">
         <div className="aspect-video relative flex items-center justify-center">
           <Image
             src={Hero}
@@ -21,6 +22,21 @@ export default function ProModal() {
             className="object-cover"
             fill
           />
+        </div>
+        <div className="text-neutral-700 mx-auto space-y-6 p-6 pb-7">
+          <h2 className="font-semibold text-xl">Upgrade to Taskify Pro!</h2>
+          <p className="font-semibold text-neutral-600">
+            Explore the best of taskify!
+          </p>
+          <div className="pl-3">
+            <ul className="list-disc text-sm">
+              <li>Unlimited boards</li>
+              <li>Advanced checklists</li>
+              <li>Admin and security features</li>
+              <li>And more!</li>
+            </ul>
+          </div>
+          <Button className="w-full">Upgrade</Button>
         </div>
       </DialogContent>
     </Dialog>
