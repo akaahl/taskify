@@ -21,4 +21,5 @@ export const DIRECT_URL = process.env.DIRECT_URL;
 export const UNSPLASH_ACCESS_KEY = process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY;
 
 export const STRIPE_API_KEY = process.env.STRIPE_API_KEY;
+export const STRIPE_WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET;
 export const NEXT_PUBLIC_APP_URL = process.env.NEXT_PUBLIC_APP_URL;
