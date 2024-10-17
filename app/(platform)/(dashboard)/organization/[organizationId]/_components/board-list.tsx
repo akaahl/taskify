@@ -3,6 +3,7 @@ import Hint from "@/components/Hint";
 import { Skeleton } from "@/components/ui/skeleton";
 import { MAX_FREE_BOARDS } from "@/constants/boards";
 import { getAvailableCount } from "@/lib/orgLimit";
+import { checkSubscription } from "@/lib/subscription";
 import prisma from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { HelpCircle, User2 } from "lucide-react";
@@ -26,7 +27,7 @@ export default async function BoardList() {
   });
 
   const availableCount = await getAvailableCount();
-  console.log(availableCount);
+  const isPro = await checkSubscription();
 
   return (
     <div className="space-y-4">
@@ -55,9 +56,11 @@ export default async function BoardList() {
             className="aspect-video w-full h-full relative bg-muted rounded-md flex flex-col gap-y-1 items-center justify-center hover:opacity transition"
           >
             <p>Create a new board</p>
-            <span className="text-sm">{`${
-              MAX_FREE_BOARDS - availableCount
-            } remaining`}</span>
+            <span className="text-sm">
+              {isPro
+                ? "Unlimited"
+                : `${MAX_FREE_BOARDS - availableCount} remaining`}
+            </span>
             <Hint
               sideOffset={40}
               description="Free workspaces can have up to 5 boards. For unlimited boards, upgrade this workspace"
