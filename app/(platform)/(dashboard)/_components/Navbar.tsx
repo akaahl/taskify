@@ -32,7 +32,7 @@ export default function Navbar() {
         <OrganizationSwitcher
           hidePersonal
           afterCreateOrganizationUrl={"/organization/:id"}
-          afterLeaveOrganizationUrl={"organization/:id"}
+          afterLeaveOrganizationUrl={"/organization/:id"}
           afterSelectOrganizationUrl={"/select-org"}
           appearance={{
             elements: {
