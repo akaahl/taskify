@@ -34,7 +34,7 @@ Check out the live demo: [Taskify](https://taskify-zeta-one.vercel.app)
 ### Backend
 
 - Prisma (ORM)
-- MySQL
+- PostgresQL (Supabase)
 - Clerk (authentication)
 - Server Actions
 - Unsplash API (for image backdrops)
